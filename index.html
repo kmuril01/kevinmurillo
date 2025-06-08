@@ -13,78 +13,121 @@
   <title>Kevin Murillo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    @media (max-width: 600px) {
-  .container {
-    padding: 1rem;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-}
+    :root {
+      --bg-page: #f0f4f8;
+      --bg-card: #ffffff;
+      --accent: #2f855a;
+      --text: #1a202c;
+      --muted: #64748b;
+      --divider: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom, #f0f4f8, #d9e2ec);
-      margin: 0;
+      background-color: var(--bg-page);
+      color: var(--text);
+      line-height: 1.6;
       padding: 2rem;
-      color: #2c3e50;
     }
+
     .container {
       max-width: 800px;
       margin: auto;
-      background: #ffffff;
-      padding: 2rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
-    h1 {
+
+    header {
+      padding: 2rem 3rem 1rem;
+    }
+    header h1 {
       font-size: 2.5rem;
+      font-weight: 700;
       margin-bottom: 0.25rem;
-      color: #1a202c;
     }
-    h2 {
-      color: #2f855a;
-      margin-top: 2rem;
-      border-bottom: 2px solid #edf2f7;
-      padding-bottom: 0.5rem;
+    header p {
+      color: var(--muted);
+      font-weight: 500;
     }
-    p {
-      font-size: 1rem;
-      margin-top: 0;
+
+    .section {
+      padding: 1.5rem 3rem;
+    }
+    .section + .section {
+      border-top: 1px solid var(--divider);
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .section p, .section ul {
       margin-bottom: 1rem;
     }
-    ul {
+    .section ul {
       list-style: none;
       padding-left: 0;
     }
-    li {
-      background: #f7fafc;
-      margin: 0.5rem 0;
+    .section ul li {
       padding: 0.75rem 1rem;
-      border-left: 4px solid #2f855a;
+      background: #f7fafc;
+      border-left: 4px solid var(--accent);
       border-radius: 6px;
-    }
-    a {
-      color: #2b6cb0;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .cert-badge {
-      display: block;        /* so margin-bottom applies */
-      margin-bottom: 2rem;   /* adjust to taste */
+      margin-bottom: 0.5rem;
+      color: var(--text);
     }
 
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+    .badges img {
+      width: 100px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform .2s;
+    }
+    .badges img:hover {
+      transform: translateY(-4px);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 1rem 3rem;
+      border-top: 1px solid var(--divider);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      header, .section, footer { padding: 1rem; }
+      .badges img { width: 80px; }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Kevin Murillo</h1>
 
-    <p>Healthcare Application Analyst | Epic Certified in Grand Central, Prelude, Welcome</p>
+    <header>
+      <h1>Kevin Murillo</h1>
+      <p>Healthcare Application Analyst | Epic Certified in Grand Central, Prelude, Welcome</p>
+    </header>
 
 
     <div class="section">
@@ -105,26 +148,17 @@
       <p>Cross-functional Team Leadership | Client Communication | Workflow Optimization</p>
     </div>
 
-    <h2>Certifications</h2>
-    <ul>
-
-      <li>Snagit Certification – <a href="https://www.techsmith.com/academy/snagit-certification" target="_blank">TechSmith</a></li>
-      <li>Hands-on AI Masterclass I: Fundamentals – <a href="https://you.com/certificates/c988d5a7-9643-4e8c-b9e7-d2c146615e29" target="_blank">PAIR via You.com</a></li>
-      <li>Hands-on AI Masterclass II: Proficiency – <a href="https://you.com/certificates/79934c5c-e264-41de-ba3f-e1d8644dab1a" target="_blank">PAIR via You.com</a></li>
-    </ul>
-
-
-    <a class="cert-badge" href="https://www.credly.com/users/kevin-murillo.7f8fb43c"
-      target="_blank" rel="noopener">
-      <img
-           src="images/microsoft-office-specialist-expert-microsoft-365-apps.png"
-           alt="Microsoft Office Specialist Expert: Microsoft 365 Apps"
-           />
-           <img
-           src="images/microsoft-office-specialist-expert-office-2019.png"
-           alt="Microsoft Office Specialist Expert: Microsoft 365 Apps"
-           />
-    </a>
+      <div class="badges">
+        <a href="https://www.credly.com/users/kevin-murillo.7f8fb43c" target="_blank" rel="noopener">
+          <img src="images/microsoft-office-specialist-expert-microsoft-365-apps.png"
+               alt="Microsoft Office Specialist Expert: Microsoft 365 Apps">
+        </a>
+        <a href="https://www.credly.com/users/kevin-murillo.7f8fb43c" target="_blank" rel="noopener">
+          <img src="images/microsoft-office-specialist-expert-office-2019.png"
+               alt="Microsoft Office Specialist Expert: Office 2019">
+        </a>
+      </div>
+    </div>
 
    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="kevinmurillo" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/kevinmurillo?trk=profile-badge"></a></div>
@@ -134,7 +168,6 @@
     <footer style="text-align:center;margin-top:2rem;color:#888;border-top:1px solid #e2e8f0;padding-top:1rem;">
       &copy; 2025 Kevin Murillo
     </footer>
-  </div>
 </body>
 </html>
 
