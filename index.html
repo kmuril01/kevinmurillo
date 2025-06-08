@@ -70,6 +70,11 @@
     a:hover {
       text-decoration: underline;
     }
+    .cert-badge {
+  display: block;        /* so margin-bottom applies */
+  margin-bottom: 2rem;   /* adjust to taste */
+}
+
   </style>
 </head>
 
@@ -100,15 +105,27 @@
 
     <h2>Certifications</h2>
     <ul>
-      <li>MOS Associate & Expert – <a href="https://www.credly.com/users/kevin-murillo.7f8fb43c" target="_blank">Credly Profile</a></li>
+
       <li>Snagit Certification – <a href="https://www.techsmith.com/academy/snagit-certification" target="_blank">TechSmith</a></li>
       <li>Hands-on AI Masterclass I: Fundamentals – <a href="https://you.com/certificates/c988d5a7-9643-4e8c-b9e7-d2c146615e29" target="_blank">PAIR via You.com</a></li>
       <li>Hands-on AI Masterclass II: Proficiency – <a href="https://you.com/certificates/79934c5c-e264-41de-ba3f-e1d8644dab1a" target="_blank">PAIR via You.com</a></li>
     </ul>
 
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="kevinmurillo" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/kevinmurillo?trk=profile-badge">Kevin Murillo</a></div>
+    <a class="cert-badge" href="https://www.credly.com/users/kevin-murillo.7f8fb43c"
+      target="_blank" rel="noopener">
+      <img
+           src="images/microsoft-office-specialist-expert-microsoft-365-apps.png"
+           alt="Microsoft Office Specialist Expert: Microsoft 365 Apps"
+           />
+           <img
+           src="images/microsoft-office-specialist-expert-office-2019.png"
+           alt="Microsoft Office Specialist Expert: Microsoft 365 Apps"
+           />
+    </a>
 
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="kevinmurillo" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/kevinmurillo?trk=profile-badge"></a></div>
+
 
     <footer style="text-align:center;margin-top:2rem;color:#888;border-top:1px solid #e2e8f0;padding-top:1rem;">
       &copy; 2025 Kevin Murillo
