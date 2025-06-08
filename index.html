@@ -1,86 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon"
-      href="images/1736001560204.jpeg"
-      type="image/jpeg">
+  <link rel="icon" href="images/1736001560204.jpeg" type="image/jpeg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Kevin Murillo - Epic-Certified Healthcare Application Analyst. Certifications, expertise, and digital portfolio.">
-  <meta property="og:title" content="Kevin Murillo | Certifications & Resume">
+  <meta property="og:title" content="Kevin Murillo | Certifications &amp; Resume">
   <meta property="og:description" content="Epic-certified Application Analyst. Certifications and project summary.">
 
   <title>Kevin C. Murillo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Core color variables */
     :root {
-  /* Light mode colors */
-  --bg-page: #f0f4f8;
-  --bg-card: #ffffff;
-  --accent: #2f855a;
-  --text: #1a202c;
-  --muted: #64748b;
-  --divider: #e2e8f0;
-  --shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode overrides */
-    --bg-page: #121212;
-    --bg-card: #1e1e1e;
-    --accent: #68d391;
-    --text: #e2e8f0;
-    --muted: #a0aec0;
-    --divider: #2d3748;
-    --shadow: 0 8px 24px rgba(0,0,0,0.5);
-  }
-}
-
-    :root {
-      --bg-page: #f0f4f8;
-      --bg-card: #ffffff;
-      --accent: #2f855a;
-      --text: #1a202c;
-      --muted: #64748b;
-      --divider: #e2e8f0;
-      --radius: 12px;
-      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+      --bg-page:   #f0f4f8;
+      --bg-card:   #ffffff;
+      --accent:    #2f855a;
+      --text:      #1a202c;
+      --muted:     #64748b;
+      --divider:   #e2e8f0;
+      --radius:    12px;
+      --shadow:    0 8px 24px rgba(0,0,0,0.08);
+    }
+    /* System-level dark-mode preference */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-page:   #121212;
+        --bg-card:   #1e1e1e;
+        --accent:    #68d391;
+        --text:      #e2e8f0;
+        --muted:     #a0aec0;
+        --divider:   #2d3748;
+        --shadow:    0 8px 24px rgba(0,0,0,0.5);
+      }
+    }
+    /* Manual dark/light override */
+    html.dark-mode {
+      --bg-page:   #121212;
+      --bg-card:   #1e1e1e;
+      --accent:    #68d391;
+      --text:      #e2e8f0;
+      --muted:     #a0aec0;
+      --divider:   #2d3748;
+      --shadow:    0 8px 24px rgba(0,0,0,0.5);
+    }
+    html.light-mode {
+      --bg-page:   #f0f4f8;
+      --bg-card:   #ffffff;
+      --accent:    #2f855a;
+      --text:      #1a202c;
+      --muted:     #64748b;
+      --divider:   #e2e8f0;
+      --shadow:    0 8px 24px rgba(0,0,0,0.08);
     }
 
-    * {
+    /* Reset & base styles */
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0; padding: 0;
     }
-
-    body {
-  background-color: var(--bg-page);
-  color: var(--text);
-}
-.container {
-  background: var(--bg-card);
-  box-shadow: var(--shadow);
-}
-.section + .section {
-  border-top: 1px solid var(--divider);
-}
-.section h2 {
-  color: var(--accent);
-}
-footer {
-  color: var(--muted);
-  border-top: 1px solid var(--divider);
-}
-
-
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-page);
+      background: var(--bg-page);
       color: var(--text);
       line-height: 1.6;
       padding: 2rem;
+      transition: background 0.3s, color 0.3s;
     }
-
     .container {
       max-width: 800px;
       margin: auto;
@@ -88,128 +74,140 @@ footer {
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
+      transition: background 0.3s, box-shadow 0.3s;
     }
 
+    /* Header with slider toggle */
     header {
       padding: 2rem 3rem 1rem;
     }
-    header h1 {
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .header-inner h1 {
       font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 0.25rem;
+    }
+    /* Slider toggle styling */
+    .theme-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .theme-switch .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: var(--divider);
+      border-radius: 26px;
+      transition: background-color 0.2s;
+    }
+    .theme-switch .slider::before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 2px;
+      bottom: 2px;
+      background-color: var(--bg-card);
+      border-radius: 50%;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .theme-switch input:checked + .slider {
+      background-color: var(--accent);
+    }
+    .theme-switch input:checked + .slider::before {
+      transform: translateX(24px);
     }
     header p {
       color: var(--muted);
       font-weight: 500;
+      margin-top: 0.25rem;
     }
 
+    /* Sections */
     .section {
       padding: 1.5rem 3rem;
-    }
-    .section + .section {
       border-top: 1px solid var(--divider);
+      transition: border-color 0.3s;
+    }
+    .section:first-of-type {
+      border-top: none;
     }
     .section h2 {
       font-size: 1.5rem;
       color: var(--accent);
       margin-bottom: 0.75rem;
       font-weight: 600;
+      transition: color 0.3s;
     }
-    .section p, .section ul {
+    .section p {
       margin-bottom: 1rem;
-    }
-    .section ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .section ul li {
-      padding: 0.75rem 1rem;
-      background: #f7fafc;
-      border-left: 4px solid var(--accent);
-      border-radius: 6px;
-      margin-bottom: 0.5rem;
-      color: var(--text);
+      transition: color 0.3s;
     }
 
+    /* Badge gallery */
     .badges {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      justify-content: left;
-      padding: 1rem 0;
+      margin-top: 1rem;
     }
     .badges img {
       width: 100px;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform .2s;
+      transition: transform .2s, box-shadow 0.3s;
     }
     .badges img:hover {
       transform: translateY(-4px);
     }
 
+    /* Footer */
     footer {
       text-align: center;
       color: var(--muted);
       font-size: 0.9rem;
       padding: 1rem 3rem;
       border-top: 1px solid var(--divider);
+      transition: color 0.3s, border-color 0.3s;
     }
 
+    /* Responsive tweaks */
     @media (max-width: 600px) {
       body { padding: 1rem; }
       header, .section, footer { padding: 1rem; }
       .badges img { width: 80px; }
     }
-
-    #theme-toggle {
-  background: none;
-  border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
-  color: var(--muted);
-  position: absolute;
-  top: 1.5rem; right: 1.5rem;
-}
-#theme-toggle:hover {
-  color: var(--accent);
-}
-.dark-mode {
-  --bg-page: #121212;
-  --bg-card: #1e1e1e;
-  --accent: #68d391;
-  --text: #e2e8f0;
-  --muted: #a0aec0;
-  --divider: #2d3748;
-  --shadow: 0 8px 24px rgba(0,0,0,0.5);
-}
-
   </style>
-
 </head>
-
 <body>
   <div class="container">
-
     <header>
-      <h1>Kevin Murillo</h1>
-      <button id="theme-toggle" aria-label="Toggle dark mode">
-        🌙
-
-      </button>
-
-
+      <div class="header-inner">
+        <h1>Kevin Murillo</h1>
+        <label class="theme-switch">
+          <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
+          <span class="slider"></span>
+        </label>
+      </div>
       <p>Healthcare Application Analyst | Epic Certified in Grand Central, Prelude, Welcome</p>
     </header>
 
-
     <div class="section">
       <h2>Professional Summary</h2>
-      <p>Epic-certified health care IT leader with over 17 years of experience in designing and optimizing enterprise-scale EHR workflows across registration,
-        logistics, and patient access. Proven track record of leading complex integrations, streamlining cross-functional operations, and driving compliance-aligned digital transformation.
-        Known for building systems that reduce friction for front-line staff, improve data reliability, and enhance patient experience across platforms like Welcome, MyChart, and HyperDrive.
-        Recognized for technical rigor, stakeholder partnership, and a commitment to continuous improvement in high-stakes clinical environments.</p>
+      <p>Epic-certified health care IT leader with over 17 years of experience in designing and optimizing enterprise-scale EHR workflows across registration, logistics, and patient access. Proven track record of leading complex integrations, streamlining cross-functional operations, and driving compliance-aligned digital transformation. Known for building systems that reduce friction for front-line staff, improve data reliability, and enhance patient experience across platforms like Welcome, MyChart, and HyperDrive. Recognized for technical rigor, stakeholder partnership, and a commitment to continuous improvement in high-stakes clinical environments.</p>
     </div>
 
     <div class="section">
@@ -226,47 +224,53 @@ footer {
       <h2>Badges</h2>
       <div class="badges">
         <a href="https://www.credly.com/users/kevin-murillo.7f8fb43c" target="_blank" rel="noopener">
-          <img src="images/microsoft-office-specialist-expert-microsoft-365-apps.png"
-               alt="Microsoft Office Specialist Expert: Microsoft 365 Apps">
+          <img src="images/microsoft-office-specialist-expert-microsoft-365-apps.png" alt="Microsoft 365 Apps MOS Expert">
         </a>
         <a href="https://www.credly.com/users/kevin-murillo.7f8fb43c" target="_blank" rel="noopener">
-          <img src="images/microsoft-office-specialist-expert-office-2019.png"
-               alt="Microsoft Office Specialist Expert: Office 2019">
+          <img src="images/microsoft-office-specialist-expert-office-2019.png" alt="Office 2019 MOS Expert">
         </a>
       </div>
     </div>
 
     <div class="section">
+      <h2>Connect</h2>
       <a href="https://www.linkedin.com/in/kevinmurillo" target="_blank" rel="noopener">
-        <img src="images/linkedinbadge.png" alt="LinkedIn Profile">
+        <img id="linkedin-badge" src="images/linkedinbadge.png" alt="LinkedIn Profile">
       </a>
 
     </div>
 
-    <footer style="text-align:center;margin-top:2rem;color:#888;border-top:1px solid #e2e8f0;padding-top:1rem;">
-      &copy; 2025 Kevin Murillo
-    </footer>
-
+    <footer>&copy; 2025 Kevin Murillo</footer>
   </div>
-<script>
-  const toggle = document.getElementById('theme-toggle');
-  const root = document.documentElement;
 
-  // Initialize based on saved preference or system preference
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    root.classList.add('dark-mode');
-    toggle.textContent = '☀️';
-  }
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const root   = document.documentElement;
+    const saved  = localStorage.getItem('theme');
+    const linkedinBadge = document.getElementById('linkedin-badge');
 
-  toggle.addEventListener('click', () => {
-    const isDark = root.classList.toggle('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    toggle.textContent = isDark ? '☀️' : '🌙';
-  });
-</script>
+    // Helper to switch LinkedIn badge image
+    function updateLinkedInBadge(isDark) {
+      linkedinBadge.src = isDark ? 'images/linkedinbadge_dark.png' : 'images/linkedinbadge.png';
+    }
 
+    // Initialize theme from saved preference or system setting
+    let initTheme = saved;
+    if (!initTheme) {
+      initTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    root.classList.add(initTheme + '-mode');
+    toggle.checked = (initTheme === 'dark');
+    updateLinkedInBadge(initTheme === 'dark');
+
+    // Toggle on change & persist
+    toggle.addEventListener('change', () => {
+      const isDark = toggle.checked;
+      root.classList.remove(isDark ? 'light-mode' : 'dark-mode');
+      root.classList.add(isDark ? 'dark-mode' : 'light-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateLinkedInBadge(isDark);
+    });
+  </script>
 </body>
 </html>
-
-
